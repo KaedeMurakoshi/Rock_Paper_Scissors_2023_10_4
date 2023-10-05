@@ -1,4 +1,4 @@
 #pragma once
 
 // プロトタイプ宣言
-bool MainGameLoop();
+bool JankenGameLoop();

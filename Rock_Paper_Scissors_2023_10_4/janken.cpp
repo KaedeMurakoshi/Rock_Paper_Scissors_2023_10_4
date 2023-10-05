@@ -3,17 +3,17 @@
 using namespace std;
 
 
-bool MainGameLoop()
+bool JankenGameLoop()
 {
+	time_t t;
+	srand(time(&t) % RAND_MAX);
+
 	// じゃんけんの手を入れる
 	int player = 0;
 	int enemy = 0;
 
 	const char* janken[] = { "グー", "パー", "チョキ"};
 
-	time_t t;
-	srand(time(&t) % RAND_MAX);
-	
 	cout << "じゃんけん. . ." << endl;
 	cout << "> " << flush;
 	cin >> player;

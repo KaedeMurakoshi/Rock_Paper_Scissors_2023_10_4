@@ -5,34 +5,47 @@ using namespace std;
 
 int Select()
 {
-	int select = 0;
-	cout << "1.じゃんけん 2.数当てゲーム > " << flush;
-	cin >> select;
+	// 0で終了したいので...
+	int select = -1;
 
-	if (select == 1 || select == 2) return select;
-
-	cout << "1 or 2" << endl;
-	// ループ
-	Select();
+	// １～２を入力するまで継続
+	while (select < 0 || select > 2)
+	{
+		select = 0;
+		cout << "1.じゃんけん 2.数当てゲーム 0.終了 > " << flush;
+		cin >> select;
+	}
+	return select;
 }
 
 int main()
 {	
-	switch (Select())
+	// 継続判定
+	bool loopGame = true;
+
+	while (loopGame)
 	{
-	case 1: cout << "<<1.グー 2. パー 3.チョキ>>" << endl;
-		cout << endl;
-
-		while (!MainGameLoop())
+		// Select()で条件分岐
+		switch (Select())
 		{
+		case 0: 
+			loopGame = false; 
+			cout << "終了します、お疲れ様でした。:D" << endl;
+			break;
+		case 1: 
+			cout << "<<1.グー 2. パー 3.チョキ>>" << endl;
+			cout << endl;
+			// 勝敗がつくまでループ
+			while (!JankenGameLoop())
+			{
 
+			}
+			break;
+		case 2:
+			KazuateLoop(); break;
+		default:
+			break;
 		}
-		break;
-	case 2:
-
-		break;
-	default:
-		break;
-	}	
+	}		
 }
 
