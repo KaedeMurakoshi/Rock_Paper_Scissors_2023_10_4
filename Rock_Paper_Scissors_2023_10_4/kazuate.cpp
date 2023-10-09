@@ -1,5 +1,8 @@
 #include <iostream>
 #include <cstdlib>
+
+#define DEBUG // 定義を外す時は、この１行をコメントアウトする。
+
 using namespace std;
 
 void KazuateLoop()
@@ -9,8 +12,10 @@ void KazuateLoop()
 	
 	// １～１００で初期化
 	int randNum = rand() % 100 + 1;
-	// デバッグ用
+
+#ifdef DEBUG
 	cout << randNum << endl;
+#endif // DEBUG
 
 	// プレイヤー入力用
 	int predictNum = 0;

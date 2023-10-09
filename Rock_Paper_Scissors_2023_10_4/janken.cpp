@@ -2,6 +2,7 @@
 #include <cstdlib>
 using namespace std;
 
+#define DEBUG // 定義を外す時は、この１行をコメントアウトする。
 
 bool JankenGameLoop()
 {
@@ -14,13 +15,18 @@ bool JankenGameLoop()
 
 	const char* janken[] = { "グー", "パー", "チョキ"};
 
+	// cpの手を１～３で初期化
+	enemy = rand() % 3 + 1;
+
+#ifdef DEBUG
+	cout << janken[enemy - 1] << endl;
+#endif // DEBUG
+
 	cout << "じゃんけん. . ." << endl;
 	cout << "> " << flush;
 	cin >> player;
-	cout << "あなた：" << janken[player - 1] << endl;
 
-	// cpの手を１～３で初期化
-	enemy = rand() % 3 + 1;
+	cout << "あなた：" << janken[player - 1] << endl;
 
 	cout << "私は" << janken[enemy -1] << "です" << endl;;
 
@@ -37,10 +43,10 @@ bool JankenGameLoop()
 	// 勝敗判定
 	switch (diff)
 	{
-	case -2: cout << "u win"; break;
-	case -1: cout << "u lose"; break;
-	case 1: cout << "u win"; break;
-	case 2: cout << "u lose"; break;
+	case -2: cout << "u win" << endl; break;
+	case -1: cout << "u lose" << endl; break;
+	case 1: cout << "u win" << endl; break;
+	case 2: cout << "u lose" << endl; break;
 	default:
 		break;
 	}
